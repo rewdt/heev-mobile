@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../presentation/my_flutter_app_icons.dart';
+import 'package:heev/widgets/appbar.dart';
+import 'package:heev/widgets/sidebar.dart';
 
 class HomeWidget extends StatelessWidget {
   @override
@@ -17,38 +18,7 @@ class HomeWidget extends StatelessWidget {
     return Container(
         child: Scaffold(
       key: _scaffoldKey,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              icon: const Icon(
-                Icons.menu,
-                color: Colors.black,
-              ),
-              onPressed: _openDrawer,
-              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
-            );
-          },
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              Icons.comment,
-              color: Colors.black,
-            ),
-            onPressed: () {},
-          )
-        ],
-        title: Text("Home",
-            style: const TextStyle(
-                color: const Color(0xff383838),
-                fontWeight: FontWeight.w700,
-                fontStyle: FontStyle.normal,
-                fontSize: 18.0),
-            textAlign: TextAlign.center),
-        centerTitle: true,
-      ),
+      appBar: drawerAppbar('Home', _openDrawer),
       body: Padding(
           padding: new EdgeInsets.symmetric(
             horizontal: 20.0,
@@ -102,119 +72,7 @@ class HomeWidget extends StatelessWidget {
               )
             ])
           ])),
-      drawer: Drawer(
-        child: Scaffold(
-            body: SafeArea(
-              child: Column(
-                children: <Widget>[
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Center(
-                    child: CircleAvatar(
-                      backgroundColor: Colors.white,
-                      backgroundImage: AssetImage('assets/images/user_alt.png'),
-                      radius: 50,
-                    ),
-                  ),
-                  Text("Alfonso",
-                      style: const TextStyle(
-                          color: const Color(0xff383838),
-                          fontWeight: FontWeight.w300,
-                          fontFamily: "Lato",
-                          fontStyle: FontStyle.normal,
-                          fontSize: 25.0),
-                      textAlign: TextAlign.center),
-                  FlatButton(
-                      onPressed: () {},
-                      child: Text("EDIT PROFILE",
-                          style: const TextStyle(
-                              color: const Color(0xfff24e86),
-                              fontWeight: FontWeight.w700,
-                              fontFamily: "Lato",
-                              fontStyle: FontStyle.normal,
-                              fontSize: 11.0),
-                          textAlign: TextAlign.center)),
-                  SizedBox(height: 20),
-                  const Divider(
-                    color: const Color(0xffeaeaea),
-                    height: 10,
-                    thickness: 1,
-                    indent: 20,
-                    endIndent: 20,
-                  ),
-                  SizedBox(height: 20),
-                  Expanded(
-                      child: ListView(
-                    children: <Widget>[
-                      ListTile(
-                        leading: Icon(MyFlutterApp.users),
-                        title: Text("Browse",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 20.0),
-                            textAlign: TextAlign.left),
-                      ),
-                      ListTile(
-                        leading: Icon(MyFlutterApp.bubble),
-                        title: Text("Messages",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 20.0),
-                            textAlign: TextAlign.left),
-                      ),
-                      ListTile(
-                        leading: Icon(MyFlutterApp.heart),
-                        title: Text("My Matches",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 20.0),
-                            textAlign: TextAlign.left),
-                      ),
-                      ListTile(
-                        leading: Icon(MyFlutterApp.star),
-                        title: Text("Global Chat",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 20.0),
-                            textAlign: TextAlign.left),
-                      ),
-                      ListTile(
-                        leading: Icon(MyFlutterApp.settings),
-                        title: Text("Settings",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 20.0),
-                            textAlign: TextAlign.left),
-                      ),
-                    ],
-                  ))
-                ],
-              ),
-            ),
-            bottomNavigationBar: Container(
-                alignment: Alignment.center,
-                width: 280,
-                height: 71,
-                decoration: BoxDecoration(color: const Color(0xfff24e86)),
-                child: Text("Meet",
-                    style: const TextStyle(
-                        color: const Color(0xffffffff),
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                        fontSize: 16.0),
-                    textAlign: TextAlign.left))),
-      ),
+      drawer: sideBar(),
       // drawerEnableOpenDragGesture: false,
     ));
   }
