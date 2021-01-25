@@ -36,7 +36,10 @@ class _BrowseUsersWidgetState extends State<BrowseUsersWidget> {
             minWidth: MediaQuery.of(context).size.width * 0.7,
             minHeight: MediaQuery.of(context).size.width * 0.7,
             cardBuilder: (context, index) => Card(
-              child: Image.asset('${welcomeImages[index]}'),
+              child: Padding(
+                  padding: new EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 20.0),
+                  child: Image.asset('${welcomeImages[index]}')),
             ),
             cardController: controller = CardController(),
             swipeUpdateCallback: (DragUpdateDetails details, Alignment align) {
@@ -53,62 +56,65 @@ class _BrowseUsersWidgetState extends State<BrowseUsersWidget> {
             },
           ),
         ),
-        footer: Stack(children: [
-          // Divider(
-          //   color: const Color(0xffe5e5e5),
-          //   height: 73,
-          //   thickness: 1,
-          //   indent: 0,
-          //   endIndent: 0,
-          // ),
-          SizedBox(
-              width: double.maxFinite,
-              height: 210.04296875,
-              child: Padding(
-                  padding: new EdgeInsets.only(bottom: 20.0),
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                            child: ButtonIcon(
-                          bgColor: const Color(0xff02b4ff),
-                          btnIcon: Icons.star,
-                          size: 50.00,
-                          iconSize: 20.00,
-                        )),
-                        Text("Janinne",
-                            style: const TextStyle(
-                                color: const Color(0xff383838),
-                                fontWeight: FontWeight.w300,
-                                fontFamily: "Lato",
-                                fontStyle: FontStyle.normal,
-                                fontSize: 25.0),
-                            textAlign: TextAlign.left),
-                        Opacity(
-                          opacity: 0.800000011920929,
-                          child: Text("24 yrs old • 1.9km away",
+        footer:
+            // Stack(children: [
+            // Divider(
+            //   color: const Color(0xffe5e5e5),
+            //   height: 73,
+            //   thickness: 1,
+            //   indent: 0,
+            //   endIndent: 0,
+            // ),
+            Container(
+                width: double.maxFinite,
+                height: 240.04296875,
+                // color: Colors.red,
+                child: Padding(
+                    padding: new EdgeInsets.only(bottom: 20.0, top: 20.0),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                              child: ButtonIcon(
+                            bgColor: const Color(0xff02b4ff),
+                            btnIcon: Icons.star,
+                            size: 50.00,
+                            iconSize: 20.00,
+                          )),
+                          Text("Janinne",
                               style: const TextStyle(
                                   color: const Color(0xff383838),
                                   fontWeight: FontWeight.w300,
                                   fontFamily: "Lato",
                                   fontStyle: FontStyle.normal,
-                                  fontSize: 13.0),
+                                  fontSize: 25.0),
                               textAlign: TextAlign.left),
-                        ),
-                        SizedBox(height: 10),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            ButtonIcon(
-                                bgColor: const Color(0xffa8a8a8),
-                                btnIcon: Icons.favorite),
-                            ButtonIcon(
-                                bgColor: const Color(0xfff24e86),
-                                btnIcon: Icons.close_rounded)
-                          ],
-                        )
-                      ])))
-        ]));
+                          Opacity(
+                            opacity: 0.800000011920929,
+                            child: Text("24 yrs old • 1.9km away",
+                                style: const TextStyle(
+                                    color: const Color(0xff383838),
+                                    fontWeight: FontWeight.w300,
+                                    fontFamily: "Lato",
+                                    fontStyle: FontStyle.normal,
+                                    fontSize: 13.0),
+                                textAlign: TextAlign.left),
+                          ),
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              ButtonIcon(
+                                  bgColor: const Color(0xffa8a8a8),
+                                  btnIcon: Icons.favorite),
+                              ButtonIcon(
+                                  bgColor: const Color(0xfff24e86),
+                                  btnIcon: Icons.close_rounded)
+                            ],
+                          )
+                        ])))
+        // ])
+        );
   }
 }
 
