@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:heev/presentation/my_flutter_app_icons.dart';
 
 Widget drawerAppbar(String title, Function _openDrawer) {
   return AppBar(
@@ -7,8 +8,9 @@ Widget drawerAppbar(String title, Function _openDrawer) {
       builder: (BuildContext context) {
         return IconButton(
           icon: const Icon(
-            Icons.menu,
-            color: Colors.black,
+            MyFlutterApp.menu,
+            color: const Color(0xff383838),
+            size: 20,
           ),
           onPressed: _openDrawer,
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
@@ -17,10 +19,8 @@ Widget drawerAppbar(String title, Function _openDrawer) {
     ),
     actions: [
       IconButton(
-        icon: const Icon(
-          Icons.comment,
-          color: Colors.black,
-        ),
+        icon: const Icon(MyFlutterApp.bubble,
+            color: const Color(0xff383838), size: 25),
         onPressed: () {},
       )
     ],

@@ -6,3 +6,5 @@ export 'screens/HomeWidget.dart';
 export 'screens/SettingsWidget.dart';
 export 'screens/MessageListWidget.dart';
 import 'screens/BrowseUsersWidget.dart';
+import 'screens/ChatWidget.dart';
+import 'screens/WallWidget.dart';

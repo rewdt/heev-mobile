@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:heev/screens/BrowseUsersWidget.dart';
+import 'package:heev/screens/ChatWidget.dart';
+import 'package:heev/screens/WallWidget.dart';
 import './shelf.dart';
 
 void main() {
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
           // '/home': (context) => HomeWidget(),
           // '/': (context) => SettingsWidget(),
           // '/': (context) => MessageListWidget(),
-          '/': (context) => BrowseUsersWidget()
+          // '/': (context) => BrowseUsersWidget(),
+          // '/': (context) => WallWidget(),
+          '/': (context) => ChatWidget()
         });
   }
 }

@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^1.1.1
   flutter_tindercard: ^0.2.0
+  dash_chat: ^1.1.15
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
