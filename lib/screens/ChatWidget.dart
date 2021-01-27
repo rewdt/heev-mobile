@@ -16,7 +16,6 @@ class _ChatWidgetState extends State<ChatWidget> {
             "https://www.wrappixel.com/ampleadmin/assets/images/users/4.jpg",
       },
       "createdAt": 1611674124824,
-      "image": "http://www.sclance.com/images/picture/Picture_753248.jpg",
       "text":
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quis metus eget libero venenatis cursus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fermentum consectetur elementum. Suspendisse ultrices mi quam, sed ultricies magna rutrum ultrices. Integer cursus lacinia mattis. Aenean eu diam vitae sem feugiat semper. Cras dictum velit in laoreet vestibulum. Nam placerat hendrerit imperdiet. Praesent pulvinar lacus vel augue condimentum, nec fringilla ex accumsan."
     },
@@ -28,7 +27,6 @@ class _ChatWidgetState extends State<ChatWidget> {
             "https://www.wrappixel.com/ampleadmin/assets/images/users/5.jpg",
       },
       "createdAt": 1611674124824,
-      "image": "http://www.sclance.com/images/picture/Picture_753248.jpg",
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. "
     }
   ];
@@ -95,18 +93,81 @@ class _ChatWidgetState extends State<ChatWidget> {
             chats.add(chatMessage.toJson());
           });
         },
-        showAvatarForEveryMessage: true,
-        showUserAvatar: true,
+        // showAvatarForEveryMessage: true,
+        // showUserAvatar: true,
         chatFooterBuilder: () {
           return Divider(thickness: 1, height: 1);
         },
-        messageContainerPadding: EdgeInsets.symmetric(vertical: 0),
+        messageContainerPadding: EdgeInsets.symmetric(vertical: 20),
         messageDecorationBuilder: (ChatMessage msg, bool isUser) {
           return BoxDecoration(
-            color: isUser ? Colors.red : Colors.blue, // example
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+            color: isUser
+                ? const Color(0xff68d1fd)
+                : const Color(0xfff595b6), // example
           );
         },
+        messageTextBuilder: (msgText, [chatMessges]) {
+          return messageText(msgText, chatMessges);
+        },
+        inputDecoration: InputDecoration(hintText: 'Type your message...'),
+        dateBuilder: (String dateString) {
+          return Opacity(
+            opacity: 0.779492974281311,
+            child: Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(bottom: 10),
+                width: 161,
+                height: 33,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(18)),
+                    border:
+                        Border.all(color: const Color(0xffa69ecf), width: 0.5)),
+                child: Text(dateString,
+                    style: const TextStyle(
+                        color: const Color(0xffa69ecf),
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 13.0),
+                    textAlign: TextAlign.right)),
+          );
+        },
+        messageTimeBuilder: (timeString, [chatMessage]) {
+          return Opacity(
+            opacity: 0.5,
+            child: Text(timeString,
+                style: const TextStyle(
+                    color: const Color(0xff383838),
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                    fontSize: 12.0),
+                textAlign: TextAlign.right),
+          );
+        },
+        dateFormat: DateFormat('dd MMMM yyyy'),
+        showTraillingBeforeSend: true,
+        trailing: [
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.camera_alt,
+                color: const Color(0xffb4b4b4), size: 30),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(Icons.mic, color: const Color(0xffb4b4b4), size: 30),
+          )
+        ],
       ),
     );
   }
+}
+
+Widget messageText(msgText, chatMessage) {
+  return Text(msgText,
+      style: const TextStyle(
+          color: const Color(0xffffffff),
+          fontWeight: FontWeight.w400,
+          fontStyle: FontStyle.normal,
+          fontSize: 15.0),
+      textAlign: TextAlign.left);
 }

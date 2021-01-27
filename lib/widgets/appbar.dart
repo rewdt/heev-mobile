@@ -10,7 +10,7 @@ Widget drawerAppbar(String title, Function _openDrawer) {
           icon: const Icon(
             MyFlutterApp.menu,
             color: const Color(0xff383838),
-            size: 20,
+            size: 15,
           ),
           onPressed: _openDrawer,
           tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
@@ -20,7 +20,7 @@ Widget drawerAppbar(String title, Function _openDrawer) {
     actions: [
       IconButton(
         icon: const Icon(MyFlutterApp.bubble,
-            color: const Color(0xff383838), size: 25),
+            color: const Color(0xff383838), size: 20),
         onPressed: () {},
       )
     ],

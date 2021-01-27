@@ -23,13 +23,13 @@ class MyApp extends StatelessWidget {
           // '/': (context) => WelcomeWidget(),
           // '/login': (context) => LoginWidget(),
           // '/signup': (context) => SignupWidget(),
-          // '/forgot-password': (context) => ForgotPassword()
-          // '/home': (context) => HomeWidget(),
+          // '/forgot-password': (context) => ForgotPassword(),
+          '/': (context) => HomeWidget(),
           // '/': (context) => SettingsWidget(),
           // '/': (context) => MessageListWidget(),
           // '/': (context) => BrowseUsersWidget(),
           // '/': (context) => WallWidget(),
-          '/': (context) => ChatWidget()
+          // '/': (context) => ChatWidget()
         });
   }
 }
