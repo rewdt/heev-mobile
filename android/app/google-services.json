@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1041008263998",
+    "project_id": "heev-38307",
+    "storage_bucket": "heev-38307.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1041008263998:android:3d11a99d5bcd058615a26f",
+        "android_client_info": {
+          "package_name": "com.example.heev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1041008263998-c9bb3hkbsuv1mt23l11v97jvg1rospqe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCt2OyQiBTmd9bKxYoows_fo3V_kZlzn6g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1041008263998-c9bb3hkbsuv1mt23l11v97jvg1rospqe.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

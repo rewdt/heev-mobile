@@ -23,6 +23,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^0.7.0
+  firebase_auth: "^0.20.0-nullsafety.0"
   google_fonts: ^1.1.1
   flutter_tindercard: ^0.2.0
   dash_chat: ^1.1.15

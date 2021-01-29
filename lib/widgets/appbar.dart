@@ -20,7 +20,7 @@ Widget drawerAppbar(String title, Function _openDrawer) {
     actions: [
       IconButton(
         icon: const Icon(MyFlutterApp.bubble,
-            color: const Color(0xff383838), size: 20),
+            color: const Color(0xff383838), size: 22),
         onPressed: () {},
       )
     ],

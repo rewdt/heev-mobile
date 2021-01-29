@@ -1,12 +1,12 @@
 // Flutter
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:heev/screens/BrowseUsersWidget.dart';
-import 'package:heev/screens/ChatWidget.dart';
-import 'package:heev/screens/WallWidget.dart';
 import './shelf.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color(0xFFFFFFFF)),
         initialRoute: '/',
         routes: {
-          // '/': (context) => WelcomeWidget(),
-          // '/login': (context) => LoginWidget(),
-          // '/signup': (context) => SignupWidget(),
-          // '/forgot-password': (context) => ForgotPassword(),
-          '/': (context) => HomeWidget(),
+          '/': (context) => WelcomeWidget(),
+          '/login': (context) => LoginWidget(),
+          '/signup': (context) => SignupWidget(),
+          '/forgot-password': (context) => ForgotPassword(),
+          // '/': (context) => HomeWidget(),
           // '/': (context) => SettingsWidget(),
           // '/': (context) => MessageListWidget(),
           // '/': (context) => BrowseUsersWidget(),

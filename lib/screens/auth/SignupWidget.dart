@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:heev/widgets/auth_button.dart';
+import 'package:heev/widgets/snackbar.dart';
 
 class SignupWidget extends StatefulWidget {
   @override
@@ -7,6 +10,44 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
+  FirebaseAuth auth = FirebaseAuth.instance;
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool isLoading = false;
+
+  void _toggleLoader(val) {
+    setState(() => {isLoading = val});
+  }
+
+  handleSignUp() async {
+    _toggleLoader(true);
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: "barry.allen@example.com",
+              password: "SuperSecretPassword!");
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        final snackBar = snackbar(
+            content: 'The password provided is too weak.',
+            color: Colors.red[400]);
+        _scaffoldKey.currentState.showSnackBar(snackBar);
+      } else if (e.code == 'email-already-in-use') {
+        final snackBar = snackbar(
+            content: 'The account already exists for that email.',
+            color: Colors.red[400]);
+        _scaffoldKey.currentState.showSnackBar(snackBar);
+      }
+    } catch (e) {
+      print(e);
+      final snackBar = snackbar(
+        content: Text('Please Check your connection settings and try again'),
+        color: Colors.red[400],
+      );
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
+    _toggleLoader(false);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,6 +56,7 @@ class _SignupWidgetState extends State<SignupWidget> {
               image: AssetImage('assets/images/Login-Reg-img.png'),
               fit: BoxFit.cover)),
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.transparent,
         appBar: AppBar(
           elevation: 0,
@@ -141,24 +183,12 @@ class _SignupWidgetState extends State<SignupWidget> {
                       SizedBox(
                         height: 50,
                         width: 100,
-                        child: ElevatedButton(
-                          child: Text(
-                            'SIGNUP',
-                            style: const TextStyle(
-                                color: Color(0xffffffff),
-                                fontWeight: FontWeight.w700,
-                                fontStyle: FontStyle.normal,
-                                fontSize: 13.0),
-                          ),
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color(0xfff24e86),
-                            onPrimary: Colors.white,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                          ),
-                        ),
+                        child: authbutton(
+                            title: 'SIGN UP',
+                            isLoading: isLoading,
+                            handlePress: () {
+                              handleSignUp();
+                            }),
                       ),
                       FlatButton(
                           onPressed: () {
