@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:heev/widgets/auth_button.dart';
@@ -10,7 +9,6 @@ class SignupWidget extends StatefulWidget {
 }
 
 class _SignupWidgetState extends State<SignupWidget> {
-  FirebaseAuth auth = FirebaseAuth.instance;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   bool isLoading = false;
 
@@ -19,32 +17,6 @@ class _SignupWidgetState extends State<SignupWidget> {
   }
 
   handleSignUp() async {
-    _toggleLoader(true);
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(
-              email: "barry.allen@example.com",
-              password: "SuperSecretPassword!");
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        final snackBar = snackbar(
-            content: 'The password provided is too weak.',
-            color: Colors.red[400]);
-        _scaffoldKey.currentState.showSnackBar(snackBar);
-      } else if (e.code == 'email-already-in-use') {
-        final snackBar = snackbar(
-            content: 'The account already exists for that email.',
-            color: Colors.red[400]);
-        _scaffoldKey.currentState.showSnackBar(snackBar);
-      }
-    } catch (e) {
-      print(e);
-      final snackBar = snackbar(
-        content: Text('Please Check your connection settings and try again'),
-        color: Colors.red[400],
-      );
-      _scaffoldKey.currentState.showSnackBar(snackBar);
-    }
     _toggleLoader(false);
   }
 

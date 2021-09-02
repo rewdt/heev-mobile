@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:heev/widgets/auth_button.dart';
 import 'package:heev/widgets/snackbar.dart';
 
@@ -9,7 +8,6 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  FirebaseAuth auth = FirebaseAuth.instance;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   final _formKey = GlobalKey<FormState>();
   bool isLoading = false;
@@ -21,36 +19,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   handleSignIn() async {
     // Validate returns true if the form is valid, otherwise false.
     if (_formKey.currentState.validate()) {
-      _toggleLoader(true);
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(
-                email: "barry.allen@example.com",
-                password: "SuperSecretPassword!");
-
-        print('userCredential');
-      } on FirebaseAuthException catch (e) {
-        // print(e);
-        if (e.code == 'user-not-found') {
-          final snackBar = snackbar(
-              content: 'No user found for that email.', color: Colors.red[400]);
-          _scaffoldKey.currentState.showSnackBar(snackBar);
-        } else {
-          if (e.code == 'wrong-password') {
-            final snackBar = snackbar(
-                content: 'Wrong password provided for that user.',
-                color: Colors.red[400]);
-            _scaffoldKey.currentState.showSnackBar(snackBar);
-          } else {
-            final snackBar = snackbar(
-              content:
-                  Text('Please Check your connection settings and try again'),
-              color: Colors.red[400],
-            );
-            _scaffoldKey.currentState.showSnackBar(snackBar);
-          }
-        }
-      }
+      print('submit');
       _toggleLoader(false);
     }
   }
